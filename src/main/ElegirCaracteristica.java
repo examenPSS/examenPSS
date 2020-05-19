@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 /**
+ *Clase elegir caracterstica
+ * * @version 1.0.0, 19/05/2020
+ * @author Pablo Sánchez Sanvicente
  *
- * @author javier
  */
 public class ElegirCaracteristica extends javax.swing.JDialog {
 
@@ -19,8 +21,10 @@ public class ElegirCaracteristica extends javax.swing.JDialog {
     private int aceptarCancelar;
 
     /**
-     * Creates new form ElegirCaracteristica
-     */
+ *PSS: Metodo elegircaracteristicas
+ * @param cadenas arrayList de las cadenas
+ * @param modal parametro booleano
+ */
     public ElegirCaracteristica(java.awt.Frame parent, boolean modal, ArrayList<String> cadenas) {
         super(parent, modal);
         initComponents();
@@ -28,13 +32,18 @@ public class ElegirCaracteristica extends javax.swing.JDialog {
 
         iniciarComponentes();
     }
-
+   /**
+ *PSS: Metodo iniciarComponentes que no devuelve nada, vacío.
+ */
     public void iniciarComponentes() {
         modeloCombo = new DefaultComboBoxModel();
         aceptarCancelar = 0;
         cargarCombo();
     }
-
+   /**
+ *PSS: Metodo cargarCombo, void
+ * 
+ */
     public void cargarCombo() {
         for (String str : cadenas) {
             modeloCombo.addElement(str);
@@ -42,19 +51,32 @@ public class ElegirCaracteristica extends javax.swing.JDialog {
         
         comboBox.setModel(modeloCombo);
     }
-
+   /**
+ *PSS: Metodo para elegir item
+ * @return cadena del item seleccionado
+ */
     public String getSelectedItem() {
         return (String) comboBox.getSelectedItem();
     }
     
+      /**
+ *PSS: Metodo para aceptar o cancelar
+ * @return devuelve aceptarCancelar
+ */
     public int getAceptarCancelar(){
         return aceptarCancelar;
     }
     
+         /**
+ *PSS: Metodo void para aceptar
+ */
     public void aceptar(){
         aceptarCancelar = 1;
         this.dispose();
     }
+            /**
+ *PSS: Metodo void para cancelar
+ */
     
     public void cancelar(){
         aceptarCancelar = -1;
@@ -128,16 +150,20 @@ public class ElegirCaracteristica extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+            /**
+ *PSS: Metodo void 
+ */
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         aceptar();
     }//GEN-LAST:event_buttonAceptarActionPerformed
-
+            /**
+ *PSS: Metodo void 
+ */
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         cancelar();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
-    /**
+    /**Método principal void de la clase.
      * @param args the command line arguments
      */
     public static void main(String args[]) {

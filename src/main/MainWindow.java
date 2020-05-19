@@ -10,8 +10,10 @@ import javax.swing.table.DefaultTableModel;
 import newpackage.Film;
 
 /**
+ *Clase MainWindow publica del proyecto
+ * * @version 1.0.0, 19/05/2020
+ * @author Pablo Sánchez Sanvicente
  *
- * @author javier
  */
 public class MainWindow extends javax.swing.JFrame {
     private String busqueda;
@@ -20,14 +22,16 @@ public class MainWindow extends javax.swing.JFrame {
     private Controlador controlador;
 
     /**
-     * Creates new form MainWindow
+     * PSS: Método MainWindow
      */
     public MainWindow() {
         initComponents();
         
         iniciarComponentes();
     }
-    
+    /**
+     * PSS: Método void iniciarcomponentes
+     */
     public void iniciarComponentes(){
         busqueda = "";
         peliculas = null;
@@ -35,7 +39,9 @@ public class MainWindow extends javax.swing.JFrame {
         iniciarTabla();
         actionButtonListar();
     }
-    
+    /**
+     * PSS: Método void iniciar tabla
+     */
     public void iniciarTabla(){
         modeloTabla.addColumn("Título");
         modeloTabla.addColumn("Año");
@@ -44,7 +50,9 @@ public class MainWindow extends javax.swing.JFrame {
         
         tabla.setModel(modeloTabla);
     }
-    
+    /**
+     * PSS: Método void actualizar tabla
+     */
     public void actualizarTabla(){
         limpiarTabla();
         
@@ -53,7 +61,9 @@ public class MainWindow extends javax.swing.JFrame {
                 f.getLength(), f.getSpecialFeatures()});
         }
     }
-    
+    /**
+     * PSS: Método void limpiar tabla
+     */
     public void limpiarTabla(){
         int rows = modeloTabla.getRowCount();
         
@@ -61,20 +71,28 @@ public class MainWindow extends javax.swing.JFrame {
             modeloTabla.removeRow(0);
         }
     }
-    
+    /**
+     * PSS: Método void listar
+     */
     public void listar(){
         peliculas = controlador.listar();
     }
-    
+    /**
+     * PSS: Método actionbuttonlistar
+     */
     public void actionButtonListar(){
         listar();
         actualizarTabla();
     }
-    
+    /**
+     * PSS: Método void buscar nomobre de pelicula
+     */
     public void buscarNombre(){
         peliculas = controlador.buscarPeliculas(busqueda);
     }
-    
+    /**
+     * PSS: Método void buttonBuscar nombre
+     */
     public void actionButtonBuscarNombre(){
         IntroducirBusqueda dialogoBusqueda = new IntroducirBusqueda(this, true);
         dialogoBusqueda.setVisible(true);
@@ -85,11 +103,15 @@ public class MainWindow extends javax.swing.JFrame {
             actualizarTabla();
         }
     }
-    
+    /**
+     * PSS: Método void buscar categoria
+     */
     public void buscarCategoria(){
         peliculas = controlador.buscarPorCategoria(busqueda);
     }
-    
+    /**
+     * PSS: Método void actionbuttonbuscar categoria
+     */
     public void actionButtonBuscarCategoria(){
         ElegirCaracteristica ec = new ElegirCaracteristica(this, true, controlador.arrayCategorias());
         ec.setVisible(true);
@@ -100,11 +122,15 @@ public class MainWindow extends javax.swing.JFrame {
             actualizarTabla();
         }
     }
-    
+    /**
+     * PSS: Método void buscar caracteristica
+     */
     public void buscarCaracteristica(){
         peliculas = controlador.buscarPorCaracteristicasEspeciales(busqueda);
     }
-    
+    /**
+     * PSS: Método void 
+     */
     public void actionButtonBuscarCaracteristicas(){
         ElegirCaracteristica ec = new ElegirCaracteristica(this, true, controlador.distinctCaracteristicas());
         ec.setVisible(true);
@@ -212,24 +238,32 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * PSS: Método void 
+     */
     private void buttonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarActionPerformed
         actionButtonListar();
     }//GEN-LAST:event_buttonListarActionPerformed
-
+/**
+     * PSS: Método void 
+     */
     private void buttonNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNombreActionPerformed
         actionButtonBuscarNombre();
     }//GEN-LAST:event_buttonNombreActionPerformed
-
+/**
+     * PSS: Método void 
+     */
     private void buttonCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCategoriaActionPerformed
         actionButtonBuscarCategoria();
     }//GEN-LAST:event_buttonCategoriaActionPerformed
-
+/**
+     * PSS: Método void 
+     */
     private void buttonCaracteristicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCaracteristicasActionPerformed
         actionButtonBuscarCaracteristicas();
     }//GEN-LAST:event_buttonCaracteristicasActionPerformed
 
-    /**
+    /**Método principal de la clase
      * @param args the command line arguments
      */
     public static void main(String args[]) {

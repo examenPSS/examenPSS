@@ -6,13 +6,16 @@
 package main;
 
 /**
+ *Clase introducir búsqueda
+ * * @version 1.0.0, 19/05/2020
+ * @author Pablo Sánchez Sanvicente
  *
- * @author javier
  */
 public class IntroducirBusqueda extends javax.swing.JDialog {
     private int aceptarCancelar;
     /**
-     * Creates new form IntroducirBusqueda
+     * PSS: Método introducir busqueda
+     * @param modal tipo boolean
      */
     public IntroducirBusqueda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -20,25 +23,36 @@ public class IntroducirBusqueda extends javax.swing.JDialog {
         
         iniciarComponentes();
     }
-    
+   /**
+     * PSS: Método void iniciar componentes
+     */
     public void iniciarComponentes(){
         aceptarCancelar = 0;
     }
-    
+    /**
+     * PSS: Método void aceptar
+     */
     public void aceptar(){
         aceptarCancelar = 1;
         this.dispose();
     }
-    
+    /**
+     * PSS: Método void cancelar
+     */
     public void cancelar(){
         aceptarCancelar = -1;
         this.dispose();
     }
-    
+    /**
+     * PSS: Método void getAceptarCancelar
+     */
     public int getAceptarCancelar(){
         return aceptarCancelar;
     }
-    
+    /**
+     * PSS: Método getBusqueda
+     * @return cadena con el texto que hemos buscado
+     */
     public String getBusqueda(){
         return inputTextBusqueda.getText();
     }
@@ -113,16 +127,20 @@ public class IntroducirBusqueda extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+     * PSS: Método void aceptaractionreformed
+     */
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         aceptar();
     }//GEN-LAST:event_buttonAceptarActionPerformed
-
+/**
+     * PSS: Método void cancelaractionperfomed
+     */
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         cancelar();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
-    /**
+    /**Método principal de la clase 
      * @param args the command line arguments
      */
     public static void main(String args[]) {

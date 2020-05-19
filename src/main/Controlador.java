@@ -15,11 +15,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
+ *Clase controlador publica del proyecto
+ * * @version 1.0.0, 19/05/2020
+ * @author Pablo Sánchez Sanvicente
  *
- * @author javier
  */
 public class Controlador {
-
+/**
+ *PSS: Metodo que lista peliculas
+ * @return deviuelve una lista de peliculas.
+ */
     public List<Film> listar(){
         List<Film> films = null;
         
@@ -36,7 +41,10 @@ public class Controlador {
         
         return films;
     }
-    
+    /**
+ *PSS: Metodo que busca peliculas
+ * @return deviuelve las peliculs listadas.
+ */
     public List<Film> buscarPeliculas(String pelicula){
         List<Film> films = null;
         pelicula = "'%" + pelicula + "%'";
@@ -55,7 +63,11 @@ public class Controlador {
         
         return films;
     }
-    
+    /**
+ *Metodo que busca peliculas por categoria
+ * @param categoria cadena para la categoria de la pelicula a buscar
+ * @return deviuelve una lista de peliculas segun la categoria dada.
+ */
     public List<Film> buscarPorCategoria(String categoria){
         List<Film> films = null;
         categoria = "'%" + categoria + "%'";
@@ -77,7 +89,11 @@ public class Controlador {
         
         return films;
     }
-    
+       /**
+ *Metodo que busca peliculas por caracteristicas especiales
+ * @param caracteristicas cadena para la caracteristica especial
+ * @return deviuelve una lista de peliculas segun caracteristica especial
+ */
     public List<Film> buscarPorCaracteristicasEspeciales(String caracteristicas){
         List<Film> films = null;
         caracteristicas = "'%" + caracteristicas + "%'";
@@ -96,7 +112,10 @@ public class Controlador {
         
         return films;
     }
-    
+          /**
+ *Metodo que devuelve las categorias
+ * @return deviuelve lista de categorias
+ */
     public List<String> categorias(){
         List<String> categorias = null;
         
@@ -114,7 +133,10 @@ public class Controlador {
         
         return categorias;
     }
-    
+ /**
+ *Metodo devuelve un array categorias
+ * @return array categorias
+ */
     public ArrayList<String> arrayCategorias(){
         List<String> categorias = categorias();
         ArrayList<String> aux = new ArrayList<>();
@@ -125,7 +147,10 @@ public class Controlador {
         
         return aux;
     }
-    
+     /**
+ *Metodo devuelve las caracteristicas
+ * @return categorias peliculas
+ */
     public List<String> caracteristicas(){
         List<String> caracteristicas = null;
         
@@ -134,7 +159,7 @@ public class Controlador {
         session.beginTransaction();
         
         if(session != null){
-            Query query = session.createQuery("select specialFeatures from Film");
+            Query query = session.createQuery("seleccione caractersticas especiales de pelicula");
             caracteristicas = query.list();
             session.getTransaction();
         }
@@ -143,7 +168,10 @@ public class Controlador {
         
         return caracteristicas;
     }
-    
+       /**
+ *Metodo devuelve las array caracteristicas
+ * @return array caracteristicas peliculas
+ */
     public ArrayList<String> arrayCaracteristicas(){
         ArrayList<String> aux = new ArrayList<>();
         List<String> list = caracteristicas();
@@ -155,14 +183,17 @@ public class Controlador {
         
         return aux;
     }
-    
+          /**
+ *Metodo agrega caracteristicas
+ * @return arrayList caracteristicas peliculas
+ */
     public ArrayList<String> distinctCaracteristicas(){
         ArrayList<String> caracteristicas = new ArrayList<>();
         
-        caracteristicas.add("Trailers");
-        caracteristicas.add("Commentaries");
-        caracteristicas.add("Behind the Scenes");
-        caracteristicas.add("Deleted Scenes");
+        caracteristicas.add("Presentacion");
+        caracteristicas.add("Opiniones");
+        caracteristicas.add("Tras la escena");
+        caracteristicas.add("Escenas eliminadas");
         
         return caracteristicas;
     }
